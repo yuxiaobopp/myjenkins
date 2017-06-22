@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "集群视图";
+    Layout = "~/Views/Shared/_IndexLayout.cshtml";
+}
+@using System.Collections;
+@using memcachedtool.Models;
+<div class="row">
+    @{
+
+        List<MmcacheStatsModel> ht = (List<MmcacheStatsModel>)ViewBag.ht;
+        foreach (MmcacheStatsModel m in ht)
+        {
+            <div class="col-md-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading" onclick="">
+                        @m.servsername  概况
+                    </div>
+                    <div class="panel-body">
+                        <div class="container-fluid">
+                            <div><label>服务器进程ID</label>：@m.pid</div>
+                            <div><label>服务器运行时间</label>：@m.uptime</div>
+                            <div><label>服务器当前的UNIX 时间</label>：@m.time</div>
+                            <div><label>版本号</label>：@m.version</div>
+                            <div><label>服务器操作系统位数</label>：@m.pointer_size</div>
+                            <div><label>当前连接数</label>：@m.curr_connections</div>
+                            <div><label>总连接数</label>：@m.total_connections</div>
+                            <div><label>获取请求数量</label>：@m.cmd_get</div>
+                            <div><label>存储请求数量</label>：@m.cmd_set</div>
+                            <div><label>flush请求的数量</label>：@m.cmd_flush</div>
+                            <div><label>获取成功的总次数</label>：@m.get_hits</div>
+                            <div><label>获取失败的总次数</label>：@m.get_misses</div>
+                            <div><label>删除失败次数</label>：@m.delete_misses</div>
+                            <div><label>删除命中次数</label>：@m.delete_hits</div>
+                            <div><label>递增失败次数</label>：@m.incr_misses</div>
+                            <div><label>递增命中次数</label>：@m.incr_hits</div>
+                            <div><label>递减命中次数</label>：@m.decr_misses</div>
+                            <div><label>递减失败次数</label>：@m.decr_hits</div>
+                            <div><label>Cas 原子设置操作失败次数</label>：@m.cas_misses</div>
+                            <div><label>Cas 命中次数</label>：@m.cas_hits</div>
+                            <div><label>Cas 操作找到key, 但是版本过期，没有设置成功</label>：@m.cas_badval</div>
+                            <div><label>认证次数（包括成功和失败）</label>：@m.auth_cmds</div>
+                            <div><label>认证失败次数</label>：@m.auth_errors</div>
+                            <div><label>总共获取的数据量</label>：@m.bytes_read</div>
+                            <div><label>总写入数量数</label>：@m.bytes_written</div>
+                            <div><label>总允许写入的数据量</label>：@m.limit_maxbytes</div>
+                            <div><label>允许的总连接数</label>：@m.accepting_conns</div>
+                            <div><label>监听失败的次数</label>：@m.listen_disabled_num</div>
+                            <div><label>需要的工作线程数</label>：@m.threads</div>
+                            <div><label>conn_yields</label>：@m.conn_yields</div>
+                            <div><label>已用缓存空间</label>：@m.bytes</div>
+                            <div><label>当前缓存item数量</label>：@m.curr_items</div>
+                            <div><label>总的存储缓存item数量</label>：@m.total_items</div>
+                            <div><label>通过删除item释放内存的次数</label>：@m.evictions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    }
+
+</div>
